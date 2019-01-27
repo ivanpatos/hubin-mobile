@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Hubin
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="loginForm" (ngSubmit)="loginFormAction()">
+    <ion-list>
+
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-input formControlName="username" type="text" placeholder="Username"></ion-input>
+      </ion-item>
+      <div padding>
+        <ng-container *ngFor="let validation of validation_messages.username">
+          <div class="error-message" *ngIf="loginForm.get('username').hasError(validation.type) && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-icon name="eye" item-start></ion-icon>
+        <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <div padding>
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-list>
+
+    <div class="error-message" *ngIf="invalidUser" align="center">
+      Invalid username or password
+    </div>
+    <div padding>
+      <button ion-button full type="submit" [disabled]="!loginForm.valid">Log in</button>
+    </div>
+  </form>
+
+  <div padding>
+    <button ion-button full (click)="loginFbAction();">Log in Facebook</button>
+  </div>
+
+</ion-content>

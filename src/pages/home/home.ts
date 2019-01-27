@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +7,21 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {
+    this.menuCtrl.enable(true, 'menu');
+  }
 
+  ionViewCanEnter() {
+    /*this.storage.get('user')
+    .then((data) => {
+      this.user = {
+        username: data.username,
+        password: data.password
+      };
+      this.userReady = true;
+    }, (error) => {
+      console.log(error);
+    });*/
   }
 
 }
