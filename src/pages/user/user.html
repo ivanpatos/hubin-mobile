@@ -8,4 +8,15 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="user">
+    <ion-item>
+      <ion-avatar item-start *ngIf="user.foto">
+          <img [src]="domSanitizer.bypassSecurityTrustUrl(user.foto.base64Src)"/>
+      </ion-avatar>
+      <h2>{{ user.username }}</h2>
+      <p>{{ user.email }}</p>
+      <p>{{ user.nombre }}</p>
+      <p>{{ user.presentacion }}</p>
+    </ion-item>
+  </div>
 </ion-content>
