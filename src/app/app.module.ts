@@ -11,15 +11,18 @@ import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { UserPage } from '../pages/user/user';
+import { DocumentListPage } from '../pages/document-list/document-list';
 
 import { UserServiceProvider } from '../providers/user-service/user-service';
+import { DocumentServiceProvider } from '../providers/document-service/document-service';
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
     HomePage,
-    UserPage
+    UserPage,
+    DocumentListPage
   ],
   imports: [
     BrowserModule,
@@ -32,14 +35,16 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
     MyApp,
     LoginPage,
     HomePage,
-    UserPage
+    UserPage,
+    DocumentListPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserServiceProvider
+    UserServiceProvider,
+    DocumentServiceProvider
   ]
 })
 export class AppModule {}

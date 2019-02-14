@@ -1,13 +1,35 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <button ion-button menuToggle *ngIf="!isSearchbarOpened">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title *ngIf="!isSearchbarOpened">Home</ion-title>
+
+    <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (search)="onSearch($event)" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <!--<p>Your name is: {{user.username}}</p>
   <p>Your password is: {{user.password}}</p>-->
+
+  <!--<ion-slides>
+    <ion-slide>
+      <ion-card>
+        <h1>Slide 1</h1>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <h1>Slide 2</h1>
+      </ion-card>
+    </ion-slide>
+   </ion-slides>-->
+
 </ion-content>
