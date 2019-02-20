@@ -12,9 +12,11 @@ import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { UserPage } from '../pages/user/user';
 import { DocumentListPage } from '../pages/document-list/document-list';
+import { MateriaPage } from '../pages/materia/materia';
 
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { DocumentServiceProvider } from '../providers/document-service/document-service';
+import { MateriaServiceProvider } from '../providers/materia-service/materia-service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { DocumentServiceProvider } from '../providers/document-service/document-
     LoginPage,
     HomePage,
     UserPage,
-    DocumentListPage
+    DocumentListPage,
+    MateriaPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { DocumentServiceProvider } from '../providers/document-service/document-
     LoginPage,
     HomePage,
     UserPage,
-    DocumentListPage
+    DocumentListPage,
+    MateriaPage
   ],
   providers: [
     StatusBar,
@@ -44,7 +48,8 @@ import { DocumentServiceProvider } from '../providers/document-service/document-
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserServiceProvider,
-    DocumentServiceProvider
+    DocumentServiceProvider,
+    MateriaServiceProvider
   ]
 })
 export class AppModule {}

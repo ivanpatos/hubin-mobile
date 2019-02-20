@@ -2,14 +2,16 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
-  selector: 'page-document-list',
-  templateUrl: 'document-list.html',
+  selector: 'page-materia',
+  templateUrl: 'materia.html',
 })
-export class DocumentListPage {
+export class MateriaPage {
 
+  materia: any
   documents: any
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.materia = navParams.get('materia');
     this.documents = navParams.get('documents');
   }
 

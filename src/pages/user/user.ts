@@ -16,13 +16,8 @@ export class UserPage {
   }
 
   async ionViewWillEnter() {
-
     var token = await this.storage.get('token').then((data) => { return data; });
     var id = await this.storage.get('data').then((data) => { return data.id; });
-
-    console.log(token);
-    console.log(id);
-
     this.userServiceProvider.getUser(token, id).subscribe(
       (data) => {
         this.user = data;

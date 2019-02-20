@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { DomSanitizer } from '@angular/platform-browser';
 import { DocumentServiceProvider } from '../../providers/document-service/document-service';
+import { MateriaServiceProvider } from '../../providers/materia-service/materia-service';
 import { DocumentListPage } from '../document-list/document-list';
+import { MateriaPage } from '../materia/materia';
 
 @Component({
   selector: 'page-home',
@@ -12,9 +15,11 @@ import { DocumentListPage } from '../document-list/document-list';
 export class HomePage {
 
   isSearchbarOpened: boolean = false;
+  materias: any
 
   constructor(public navCtrl: NavController, public menuCtrl: MenuController, public alertController: AlertController,
-    public storage: Storage, public documentServiceProvider: DocumentServiceProvider) {
+    public storage: Storage, public documentServiceProvider: DocumentServiceProvider, public materiaServiceProvider: MateriaServiceProvider,
+    public domSanitizer: DomSanitizer) {
     this.menuCtrl.enable(true, 'menu');
   }
 
@@ -29,11 +34,10 @@ export class HomePage {
 
   async onSearch(event){
     var token = await this.storage.get('token').then((data) => { return data; });
-    var id = await this.storage.get('data').then((data) => { return data.id; });
-    this.documentServiceProvider.searchDocument(token, id, event.target.value).subscribe(
+    this.documentServiceProvider.searchDocument(token, event.target.value).subscribe(
       (data: any[]) => {
         if (data && data.length > 0) {
-          this.navCtrl.push(DocumentListPage, { data: data });
+          this.navCtrl.push(DocumentListPage, { documents: data });
         }
         else {
           this.presentAlert();
@@ -45,17 +49,33 @@ export class HomePage {
     );
   }
 
-  ionViewCanEnter() {
-    /*this.storage.get('user')
-    .then((data) => {
-      this.user = {
-        username: data.username,
-        password: data.password
-      };
-      this.userReady = true;
-    }, (error) => {
-      console.log(error);
-    });*/
+  async ionViewWillEnter() {
+    var token = await this.storage.get('token').then((data) => { return data; });
+    this.materiaServiceProvider.getMateriasDestacadas(token).subscribe(
+      (data) => {
+        this.materias = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  async onSearchByMateria(materia){
+    var token = await this.storage.get('token').then((data) => { return data; });
+    this.documentServiceProvider.searchDocumentByMateria(token, materia.id).subscribe(
+      (data: any[]) => {
+        if (data && data.length > 0) {
+          this.navCtrl.push(MateriaPage, { materia: materia, documents: data });
+        }
+        else {
+          this.presentAlert();
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
 }

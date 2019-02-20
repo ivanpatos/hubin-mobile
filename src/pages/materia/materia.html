@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{materia.nombre}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let document of documents">
+      <h2>{{ document.nombre }}</h2>
+      <p>{{ document.descripcion }}</p>
+      <p>Extension: {{ document.extension }}</p>
+      <p>Creacion: {{ document.fechaCreacion }}</p>
+      <p>Ulima modificacion: {{ document.fechaUltModificacion }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

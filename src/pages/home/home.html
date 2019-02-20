@@ -15,21 +15,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <!--<p>Your name is: {{user.username}}</p>
-  <p>Your password is: {{user.password}}</p>-->
-
-  <!--<ion-slides>
-    <ion-slide>
-      <ion-card>
-        <h1>Slide 1</h1>
-      </ion-card>
-    </ion-slide>
-    <ion-slide>
-      <ion-card>
-        <h1>Slide 2</h1>
-      </ion-card>
-    </ion-slide>
-   </ion-slides>-->
-
+<ion-content class="card-background-page">
+  <ion-card *ngFor="let materia of materias" (click)="onSearchByMateria(materia)">
+    <div class="card-title">{{materia.nombre}}</div>
+    <img class="full-image" [src]="domSanitizer.bypassSecurityTrustUrl(materia.foto.base64Src)"/>
+  </ion-card>
 </ion-content>

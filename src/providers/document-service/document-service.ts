@@ -7,7 +7,7 @@ export class DocumentServiceProvider {
   constructor(public http: HttpClient) {
   }
 
-  searchDocument(token, id, name) {
+  searchDocument(token, name) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -15,6 +15,16 @@ export class DocumentServiceProvider {
       })
     };
     return this.http.get("http://192.168.0.4:8085/hubin/documento?name=" + name, httpOptions);
+  }
+
+  searchDocumentByMateria(token, idMateria) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + token
+      })
+    };
+    return this.http.get("http://192.168.0.4:8085/hubin/documento?subject=" + idMateria, httpOptions);
   }
 
 }
