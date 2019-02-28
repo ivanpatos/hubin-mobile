@@ -87,6 +87,10 @@
         <variable name="APP_NAME" value="hubin-app" />
     </plugin>
     <plugin name="cordova-sqlite-storage" spec="2.6.0" />
+    <plugin name="cordova-plugin-file" spec="6.0.1" />
+    <plugin name="cordova-plugin-file-opener2" spec="2.2.0">
+        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
+    </plugin>
     <engine name="android" spec="~7.1.4" />
     <engine name="browser" spec="~5.0.4" />
 </widget>

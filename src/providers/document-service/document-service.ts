@@ -27,4 +27,14 @@ export class DocumentServiceProvider {
     return this.http.get("http://192.168.0.4:8085/hubin/documento?subject=" + idMateria, httpOptions);
   }
 
+  searchVersion(token, idDocumento, idVersion) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + token
+      })
+    };
+    return this.http.get("http://192.168.0.4:8085/hubin/documento/" + idDocumento + /version/ + idVersion, httpOptions);
+  }
+
 }

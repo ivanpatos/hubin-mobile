@@ -18,6 +18,9 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
 import { DocumentServiceProvider } from '../providers/document-service/document-service';
 import { MateriaServiceProvider } from '../providers/materia-service/materia-service';
 
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -49,7 +52,7 @@ import { MateriaServiceProvider } from '../providers/materia-service/materia-ser
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserServiceProvider,
     DocumentServiceProvider,
-    MateriaServiceProvider
+    MateriaServiceProvider, File, FileOpener
   ]
 })
 export class AppModule {}

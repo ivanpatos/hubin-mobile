@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let document of documents">
+    <ion-item *ngFor="let document of documents" (click)="downloadDocument(document)">
       <h2>{{ document.nombre }}</h2>
       <p>{{ document.descripcion }}</p>
       <p>Extension: {{ document.extension }}</p>
