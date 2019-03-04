@@ -11,6 +11,7 @@ import { UserServiceProvider } from '../../providers/user-service/user-service';
 export class UserPage {
 
   user: any
+  documentos: any
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public userServiceProvider: UserServiceProvider, public domSanitizer: DomSanitizer) {
   }
@@ -18,15 +19,12 @@ export class UserPage {
   async ionViewWillEnter() {
     var token = await this.storage.get('token').then((data) => { return data; });
     var id = await this.storage.get('data').then((data) => { return data.id; });
-    this.userServiceProvider.getUser(token, id).subscribe(
-      (data) => {
-        this.user = data;
-        console.log(this.user);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.userServiceProvider.getUser(token, id).subscribe( (data) => {this.user = data;}, (error) => {console.log(error);} );
+    this.userServiceProvider.getDocumentos(token).subscribe( (data) => {
+      this.documentos = data;
+      console.log(data);
+      console.log(this.documentos);
+    }, (error) => {console.log(error);} );
   }
 
 }

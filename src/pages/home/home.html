@@ -3,7 +3,7 @@
     <button ion-button menuToggle *ngIf="!isSearchbarOpened">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title *ngIf="!isSearchbarOpened">Home</ion-title>
+    <ion-title *ngIf="!isSearchbarOpened">Inicio</ion-title>
 
     <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (search)="onSearch($event)" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
     <ion-buttons end>

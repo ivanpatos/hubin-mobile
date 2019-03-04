@@ -17,14 +17,10 @@ export class LoginPage {
 
   validation_messages = {
     'username': [
-      { type: 'required', message: 'Username is required.' },
-      { type: 'minlength', message: 'Username must be at least 4 characters long.' },
-      { type: 'maxlength', message: 'Username cannot be more than 25 characters long.' }
+      { type: 'required', message: 'Usuario requerido.' }
     ],
     'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 3 characters long.' },
-      { type: 'maxlength', message: 'Password cannot be more than 25 characters long.' }
+      { type: 'required', message: 'Password requerido.' }
     ]
   };
 
@@ -35,13 +31,9 @@ export class LoginPage {
   ionViewWillLoad() {
     this.loginForm = this.formBuilder.group({
       username: new FormControl('', Validators.compose([
-        Validators.maxLength(25),
-        Validators.minLength(4),
         Validators.required
       ])),
       password: new FormControl('', Validators.compose([
-        Validators.maxLength(25),
-        Validators.minLength(3),
         Validators.required
       ]))
     });

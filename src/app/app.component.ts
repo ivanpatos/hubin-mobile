@@ -34,8 +34,8 @@ export class MyApp {
       });
     });
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'My account', component: UserPage }
+      { title: 'Inicio', component: HomePage },
+      { title: 'Mi cuenta', component: UserPage }
     ];
   }
 
