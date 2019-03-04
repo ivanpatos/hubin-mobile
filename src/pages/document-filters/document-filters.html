@@ -9,7 +9,7 @@
 
 
 <ion-content padding>
-  <ion-item *ngIf="!selectedMateria">
+  <ion-item *ngIf="!materia">
     <ion-label>Materia</ion-label>
     <ion-select [(ngModel)]="selectedMateria">
       <ion-option *ngFor="let materia of materias" [value]="materia">{{materia.nombre}}</ion-option>

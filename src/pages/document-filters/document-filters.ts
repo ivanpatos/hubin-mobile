@@ -20,6 +20,9 @@ export class DocumentFiltersPage {
   niveles: any
   idiomas: any
 
+  nombre: any
+  materia: any
+
   selectedMateria: any
   selectedEntidad: any
   selectedIdioma: any
@@ -31,7 +34,8 @@ export class DocumentFiltersPage {
     public entidadServiceProvider: EntidadServiceProvider,
     public nivelServiceProvider: NivelServiceProvider,
     public idiomaServiceProvider: IdiomaServiceProvider) {
-      this.selectedMateria = navParams.get('materia');
+      this.nombre = navParams.get('nombre');
+      this.materia = navParams.get('materia');
   }
 
   async ionViewWillEnter() {
@@ -44,14 +48,14 @@ export class DocumentFiltersPage {
 
   async applyFilters() {
     var token = await this.storage.get('token').then((data) => { return data; });
-    this.documentServiceProvider.searchDocumentByMateriaWithFilters(token,
-      this.selectedMateria ? this.selectedMateria.id : null,
+    this.documentServiceProvider.searchDocumentWithFilters(token,
+      this.nombre,
+      this.materia ? this.materia.id : (this.selectedMateria ? this.selectedMateria.id : null),
       this.selectedEntidad ? this.selectedEntidad.id : null,
       this.selectedIdioma ? this.selectedIdioma.id : null,
       this.selectedNivel ? this.selectedNivel.id : null).subscribe(
       (data: any[]) => {
         if (data && data.length > 0) {
-          this.navCtrl.getPrevious().data.materia = this.selectedMateria;
           this.navCtrl.getPrevious().data.documents = data;
           this.navCtrl.pop();
         }

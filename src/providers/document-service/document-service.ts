@@ -37,17 +37,44 @@ export class DocumentServiceProvider {
     return this.http.get("http://192.168.0.4:8085/hubin/documento/" + idDocumento + /version/ + idVersion, httpOptions);
   }
 
-  searchDocumentByMateriaWithFilters(token, idMateria, idEntidad, idIdioma, idNivel) {
+  searchDocumentWithFilters(token, nombre, idMateria, idEntidad, idIdioma, idNivel) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'Basic ' + token
       })
     };
-    var query = "?subject=" + idMateria;
-    if (idEntidad != null) query += "&entity=" + idEntidad;
-    if (idIdioma != null) query += "&language=" + idIdioma;
-    if (idNivel != null) query += "&level=" + idNivel;
+    var query = "";
+    if (nombre != null) {
+      if (query === "")
+        query += "?name=" + nombre;
+      else
+        query += "&name=" + nombre;
+    }
+    if (idMateria != null) {
+      if (query === "")
+        query += "?subject=" + idMateria;
+      else
+        query += "&subject=" + idMateria;
+    }
+    if (idEntidad != null) {
+      if (query === "")
+        query += "?entity=" + idEntidad;
+      else
+        query += "&entity=" + idEntidad;
+    }
+    if (idIdioma != null) {
+      if (query === "")
+        query += "?language=" + idIdioma;
+      else
+        query += "&language=" + idIdioma;
+    }
+    if (idNivel != null) {
+      if (query === "")
+        query += "?level=" + idNivel;
+      else
+        query += "&level=" + idNivel;
+    }
     return this.http.get("http://192.168.0.4:8085/hubin/documento" + query, httpOptions);
   }
 

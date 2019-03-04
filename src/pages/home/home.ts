@@ -6,7 +6,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { DocumentServiceProvider } from '../../providers/document-service/document-service';
 import { MateriaServiceProvider } from '../../providers/materia-service/materia-service';
 import { DocumentListPage } from '../document-list/document-list';
-import { MateriaPage } from '../materia/materia';
 
 @Component({
   selector: 'page-home',
@@ -37,7 +36,7 @@ export class HomePage {
     this.documentServiceProvider.searchDocument(token, event.target.value).subscribe(
       (data: any[]) => {
         if (data && data.length > 0) {
-          this.navCtrl.push(DocumentListPage, { documents: data });
+          this.navCtrl.push(DocumentListPage, { nombre: event.target.value, documents: data });
         }
         else {
           this.presentAlert();
@@ -66,7 +65,7 @@ export class HomePage {
     this.documentServiceProvider.searchDocumentByMateria(token, materia.id).subscribe(
       (data: any[]) => {
         if (data && data.length > 0) {
-          this.navCtrl.push(MateriaPage, { materia: materia, documents: data });
+          this.navCtrl.push(DocumentListPage, { materia: materia, documents: data });
         }
         else {
           this.presentAlert();

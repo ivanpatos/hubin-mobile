@@ -12,7 +12,6 @@ import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { UserPage } from '../pages/user/user';
 import { DocumentListPage } from '../pages/document-list/document-list';
-import { MateriaPage } from '../pages/materia/materia';
 import { DocumentFiltersPage } from '../pages/document-filters/document-filters';
 
 import { UserServiceProvider } from '../providers/user-service/user-service';
@@ -32,7 +31,6 @@ import { FileOpener } from '@ionic-native/file-opener';
     HomePage,
     UserPage,
     DocumentListPage,
-    MateriaPage,
     DocumentFiltersPage
   ],
   imports: [
@@ -48,7 +46,6 @@ import { FileOpener } from '@ionic-native/file-opener';
     HomePage,
     UserPage,
     DocumentListPage,
-    MateriaPage,
     DocumentFiltersPage
   ],
   providers: [

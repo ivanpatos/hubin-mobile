@@ -1,14 +1,17 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Documents found</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="applyFilters()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let document of documents">
+    <ion-item *ngFor="let document of documents" (click)="downloadDocument(document)">
       <h2>{{ document.nombre }}</h2>
       <p>{{ document.descripcion }}</p>
       <p>Extension: {{ document.extension }}</p>
