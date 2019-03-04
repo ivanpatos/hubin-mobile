@@ -23,7 +23,7 @@
 
   <ion-list *ngIf="documentos?.documentosCreados.length">
     <ion-label>Documentos subidos</ion-label>
-    <ion-item *ngFor="let document of documentos.documentosCreados">
+    <ion-item *ngFor="let document of documentos.documentosCreados" (click)="downloadDocument(document)">
       <h2>{{ document.nombre }}</h2>
       <p>{{ document.descripcion }}</p>
       <p>Extension: {{ document.extension }}</p>
@@ -34,7 +34,7 @@
 
   <ion-list *ngIf="documentos?.documentosConAcceso.length">
     <ion-label>Documentos compartidos contigo</ion-label>
-    <ion-item *ngFor="let document of documentos.documentosConAcceso">
+    <ion-item *ngFor="let document of documentos.documentosConAcceso" (click)="downloadDocument(document)">
       <h2>{{ document.nombre }}</h2>
       <p>{{ document.descripcion }}</p>
       <p>Extension: {{ document.extension }}</p>

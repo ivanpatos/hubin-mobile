@@ -20,6 +20,7 @@ import { MateriaServiceProvider } from '../providers/materia-service/materia-ser
 import { EntidadServiceProvider } from '../providers/entidad-service/entidad-service';
 import { IdiomaServiceProvider } from '../providers/idioma-service/idioma-service';
 import { NivelServiceProvider } from '../providers/nivel-service/nivel-service';
+import { DocumentDownloaderProvider } from '../providers/document-downloader/document-downloader';
 
 import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
@@ -58,7 +59,8 @@ import { FileOpener } from '@ionic-native/file-opener';
     MateriaServiceProvider, File, FileOpener,
     EntidadServiceProvider,
     IdiomaServiceProvider,
-    NivelServiceProvider
+    NivelServiceProvider,
+    DocumentDownloaderProvider
   ]
 })
 export class AppModule {}
