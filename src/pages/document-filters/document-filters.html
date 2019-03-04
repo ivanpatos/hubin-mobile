@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Filters</ion-title>
+    <ion-buttons end>
+      <button ion-button style="text-transform: none;" (click)="applyFilters()">Apply</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item *ngIf="!selectedMateria">
+    <ion-label>Materia</ion-label>
+    <ion-select [(ngModel)]="selectedMateria">
+      <ion-option *ngFor="let materia of materias" [value]="materia">{{materia.nombre}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Entidad</ion-label>
+    <ion-select [(ngModel)]="selectedEntidad">
+      <ion-option *ngFor="let entidad of entidades" [value]="entidad">{{entidad.nombreCorto}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Idioma</ion-label>
+    <ion-select [(ngModel)]="selectedIdioma">
+      <ion-option *ngFor="let idioma of idiomas" [value]="idioma">{{idioma.nombre}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nivel</ion-label>
+    <ion-select [(ngModel)]="selectedNivel">
+      <ion-option *ngFor="let nivel of niveles" [value]="nivel">{{nivel.nombre}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-content>

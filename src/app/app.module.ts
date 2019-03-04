@@ -13,10 +13,14 @@ import { HomePage } from '../pages/home/home';
 import { UserPage } from '../pages/user/user';
 import { DocumentListPage } from '../pages/document-list/document-list';
 import { MateriaPage } from '../pages/materia/materia';
+import { DocumentFiltersPage } from '../pages/document-filters/document-filters';
 
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { DocumentServiceProvider } from '../providers/document-service/document-service';
 import { MateriaServiceProvider } from '../providers/materia-service/materia-service';
+import { EntidadServiceProvider } from '../providers/entidad-service/entidad-service';
+import { IdiomaServiceProvider } from '../providers/idioma-service/idioma-service';
+import { NivelServiceProvider } from '../providers/nivel-service/nivel-service';
 
 import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
@@ -28,7 +32,8 @@ import { FileOpener } from '@ionic-native/file-opener';
     HomePage,
     UserPage,
     DocumentListPage,
-    MateriaPage
+    MateriaPage,
+    DocumentFiltersPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,8 @@ import { FileOpener } from '@ionic-native/file-opener';
     HomePage,
     UserPage,
     DocumentListPage,
-    MateriaPage
+    MateriaPage,
+    DocumentFiltersPage
   ],
   providers: [
     StatusBar,
@@ -52,7 +58,10 @@ import { FileOpener } from '@ionic-native/file-opener';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserServiceProvider,
     DocumentServiceProvider,
-    MateriaServiceProvider, File, FileOpener
+    MateriaServiceProvider, File, FileOpener,
+    EntidadServiceProvider,
+    IdiomaServiceProvider,
+    NivelServiceProvider
   ]
 })
 export class AppModule {}

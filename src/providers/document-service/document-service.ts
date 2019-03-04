@@ -37,4 +37,18 @@ export class DocumentServiceProvider {
     return this.http.get("http://192.168.0.4:8085/hubin/documento/" + idDocumento + /version/ + idVersion, httpOptions);
   }
 
+  searchDocumentByMateriaWithFilters(token, idMateria, idEntidad, idIdioma, idNivel) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + token
+      })
+    };
+    var query = "?subject=" + idMateria;
+    if (idEntidad != null) query += "&entity=" + idEntidad;
+    if (idIdioma != null) query += "&language=" + idIdioma;
+    if (idNivel != null) query += "&level=" + idNivel;
+    return this.http.get("http://192.168.0.4:8085/hubin/documento" + query, httpOptions);
+  }
+
 }

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
 import { DocumentServiceProvider } from '../../providers/document-service/document-service';
+import { DocumentFiltersPage } from '../document-filters/document-filters';
 
 @Component({
   selector: 'page-materia',
@@ -14,16 +15,21 @@ export class MateriaPage {
   materia: any
   documents: any
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform,
+  constructor(public navCtrl: NavController, public navParams: NavParams,
     public storage: Storage, public documentServiceProvider: DocumentServiceProvider,
     private file: File, private fileOpener: FileOpener) {
     this.materia = navParams.get('materia');
     this.documents = navParams.get('documents');
   }
 
+  ionViewWillEnter() {
+    this.materia = this.navParams.get('materia');
+    this.documents = this.navParams.get('documents');
+  }
+
   async downloadDocument(documento) {
     console.log(documento);
-    var idVersion = Math.max.apply(null, documento.versiones);
+    var idVersion = Math.max.apply(Math, documento.versiones.map(function(version) { return version.id; }));
     var token = await this.storage.get('token').then((data) => { return data; });
     this.documentServiceProvider.searchVersion(token, documento.id, idVersion).subscribe(
       (version: any) => {
@@ -65,6 +71,10 @@ export class MateriaPage {
       byteArrays.push(byteArray);
     }
     return new Blob(byteArrays, {type: contentType});
+  }
+
+  applyFilters() {
+    this.navCtrl.push(DocumentFiltersPage, { materia: this.materia });
   }
 
 }

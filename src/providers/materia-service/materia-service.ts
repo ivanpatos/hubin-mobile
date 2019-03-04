@@ -21,4 +21,14 @@ export class MateriaServiceProvider {
     return this.http.get("http://192.168.0.4:8085/hubin/materia/destacadas", httpOptions);
   }
 
+  getMaterias(token) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + token
+      })
+    };
+    return this.http.get("http://192.168.0.4:8085/hubin/materia", httpOptions);
+  }
+
 }
