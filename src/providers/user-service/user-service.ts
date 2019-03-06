@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseProvider } from '../base-provider';
 
 @Injectable()
 export class UserServiceProvider {
@@ -19,7 +20,7 @@ export class UserServiceProvider {
         'Authorization': 'Basic ' + token
       })
     };
-    return this.http.post("http://192.168.0.4:8085/hubin/alumno/login", null, httpOptions);
+    return this.http.post(BaseProvider.getApiPath()+"/hubin/alumno/login", null, httpOptions);
   }
 
   getUser(token, id) {
@@ -29,7 +30,7 @@ export class UserServiceProvider {
         'Authorization': 'Basic ' + token
       })
     };
-    return this.http.get("http://192.168.0.4:8085/hubin/alumno/" + id, httpOptions);
+    return this.http.get(BaseProvider.getApiPath()+"/hubin/alumno/" + id, httpOptions);
   }
 
   getDocumentos(token) {
@@ -39,7 +40,7 @@ export class UserServiceProvider {
         'Authorization': 'Basic ' + token
       })
     };
-    return this.http.get("http://192.168.0.4:8085/hubin/alumno/documentos", httpOptions);
+    return this.http.get(BaseProvider.getApiPath()+"/hubin/alumno/documentos", httpOptions);
   }
 
 }

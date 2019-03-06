@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseProvider } from '../base-provider';
 
 @Injectable()
 export class MateriaServiceProvider {
@@ -18,7 +19,7 @@ export class MateriaServiceProvider {
         'Authorization': 'Basic ' + token
       })
     };
-    return this.http.get("http://192.168.0.4:8085/hubin/materia/destacadas", httpOptions);
+    return this.http.get(BaseProvider.getApiPath()+"/hubin/materia/destacadas", httpOptions);
   }
 
   getMaterias(token) {
@@ -28,7 +29,7 @@ export class MateriaServiceProvider {
         'Authorization': 'Basic ' + token
       })
     };
-    return this.http.get("http://192.168.0.4:8085/hubin/materia", httpOptions);
+    return this.http.get(BaseProvider.getApiPath()+"/hubin/materia", httpOptions);
   }
 
 }

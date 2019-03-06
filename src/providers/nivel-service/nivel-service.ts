@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseProvider } from '../base-provider';
 
 @Injectable()
 export class NivelServiceProvider {
@@ -14,7 +15,7 @@ export class NivelServiceProvider {
         'Authorization': 'Basic ' + token
       })
     };
-    return this.http.get("http://192.168.0.4:8085/hubin/nivel", httpOptions);
+    return this.http.get(BaseProvider.getApiPath()+"/hubin/nivel", httpOptions);
   }
 
 }

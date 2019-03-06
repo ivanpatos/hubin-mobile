@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseProvider } from '../base-provider';
 
 @Injectable()
 export class DocumentServiceProvider {
@@ -14,7 +15,7 @@ export class DocumentServiceProvider {
         'Authorization': 'Basic ' + token
       })
     };
-    return this.http.get("http://192.168.0.4:8085/hubin/documento?name=" + name, httpOptions);
+    return this.http.get(BaseProvider.getApiPath()+"/hubin/documento?name=" + name, httpOptions);
   }
 
   searchDocumentByMateria(token, idMateria) {
@@ -24,7 +25,7 @@ export class DocumentServiceProvider {
         'Authorization': 'Basic ' + token
       })
     };
-    return this.http.get("http://192.168.0.4:8085/hubin/documento?subject=" + idMateria, httpOptions);
+    return this.http.get(BaseProvider.getApiPath()+"/hubin/documento?subject=" + idMateria, httpOptions);
   }
 
   searchVersion(token, idDocumento, idVersion) {
@@ -34,7 +35,7 @@ export class DocumentServiceProvider {
         'Authorization': 'Basic ' + token
       })
     };
-    return this.http.get("http://192.168.0.4:8085/hubin/documento/" + idDocumento + /version/ + idVersion, httpOptions);
+    return this.http.get(BaseProvider.getApiPath()+"/hubin/documento/" + idDocumento + /version/ + idVersion, httpOptions);
   }
 
   searchDocumentWithFilters(token, nombre, idMateria, idEntidad, idIdioma, idNivel) {
@@ -75,7 +76,7 @@ export class DocumentServiceProvider {
       else
         query += "&level=" + idNivel;
     }
-    return this.http.get("http://192.168.0.4:8085/hubin/documento" + query, httpOptions);
+    return this.http.get(BaseProvider.getApiPath()+"/hubin/documento" + query, httpOptions);
   }
 
 }

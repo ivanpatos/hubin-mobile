@@ -5,7 +5,6 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { UserServiceProvider } from '../../providers/user-service/user-service';
-
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
