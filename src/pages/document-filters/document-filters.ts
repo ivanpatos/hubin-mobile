@@ -71,8 +71,8 @@ export class DocumentFiltersPage {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      title: 'No documents found',
-      subTitle: 'Search again please',
+      title: 'No se han encontrado documentos',
+      subTitle: 'Vuelva a buscar por favor',
       buttons: ['OK']
     });
     await alert.present();
